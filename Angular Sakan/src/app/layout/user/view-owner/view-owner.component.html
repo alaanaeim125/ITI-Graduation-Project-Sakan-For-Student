@@ -1,0 +1,92 @@
+<h4 class='alert alert-success text-center'>
+  صفحة عرض تفاصيل اصحاب العقارات
+</h4>
+<div class="row py-2 " dir="rtl">
+  <div class="col-xl-11 col-md-11 col-sm-10 mx-auto">
+
+      <div class="bg-white shadow rounded overflow-hidden">
+          <div class="px-2 pt-0 pb-4 bg-primary">
+
+              <div class="media align-items-end profile-header">
+                  <div class="profile mr-3 mt-3">
+                    <img src="{{selectedOwner.imgUrlOwner}}" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+                    <a href="#" class="btn btn-dark btn-sm btn-block"  routerLink="/editOwner/{{selectedOwner._id}}">تعديل البيانات الشخصية</a>
+                  </div>
+                  <div class="mb-5  text-white" >
+                      <h4 class="nameAbove">{{selectedOwner.fullName}}</h4>
+                  </div>
+              </div>
+
+
+          </div>
+         <div class="row">
+          <div class="col-xl-3 col-md-4 col-sm-6 " >
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                  <h5 class="mb-0">المعلومات الشخصية</h5>
+                  <a href="" class="btn btn-link text-muted"  routerLink="/editOwner/{{selectedOwner._id}}">تعديل</a>
+              </div>
+              <div class="py-4 mb-3">
+                  <div class="p-6 bg-light rounded shadow dirProf" style="width:100%">
+                         
+                         <div class="text-center name">{{selectedOwner.fullName}}</div>
+                         <hr>
+                         <div class="text-center username">{{selectedOwner.email}}</div>
+                          <hr>
+                          <div class="text-center phone"> {{selectedOwner.phone}}</div>
+                          <br>
+
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-xl-9 col-md-8 col-sm-6">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                  <h5 class="mb-0">العقارات</h5>
+                  <!----a href="#" class="btn btn-link text-muted"  routerLink='/ownerProfile'>عرض الكل</a-->
+              </div>
+
+                            <!--  start of card  -->
+                              <div class=" row mb-4 shadow h-md-250" style="width: 100%; display: flex;flex-direction: column;align-items: center"
+                               *ngIf="isOwnerHasPost">
+                                <div class="col-sm-6"><img class="" style="width: 100%;height:150px;"  src="{{Post.ImageUrl}}"> </div>
+                                <div  class=" col-sm-6 card-body d-flex flex-column align-items-start" style="width: 60%;" dir="rtl">
+                                   <strong class="d-inline-block mb-2 text-primary"> {{Post.Details}} </strong>
+                                   <h6 class="mb-0" dir="rtl" style="text-align: right">                             
+                                   العنوان: محافظة {{Post.Governar}} مركز {{Post.District}} شارع {{Post.Street}}
+                                    <br>
+                                    علي مساحة {{Post.Area}} متر
+                                   </h6>
+                                   <br>
+                                   <div class="mb-1 text-muted small mr-0" dir="rtl"> تاريخ النشر  : {{stringDate}} </div>
+                                   <p class="card-text mb-auto">عدد الغرف : {{Post.NumberOfRooms}} </p>
+                                   <p class="card-text mb-auto">عدد الاسرة الفارغة : {{Post.Available_NumberOfBeds}} </p>
+                                   <p class="card-text mb-auto">السعر للإيجار : {{Post.Price}} </p>
+                                   <div style="text-align: center; width:100%;margin-top: 15px">
+                                      <a class="btn btn-primary btn-sm" style="display:inline;" role="button" 
+                                       routerLink="/editPost/{{Post._id}}"> تعديل </a>
+                                         &nbsp;
+                                       <button class="btn btn-danger btn-sm" style="display:inline;" role="button" 
+                                       (click)="deleteOwnerPost(selectedOwner._id,Post._id)" > حذف </button>
+                                   </div>
+                                </div> 
+                             </div>
+                        
+                             <!-- end of card -->
+                                 <!-- strat pagination-->
+
+                                 <div class="row pb-15" style="padding-bottom: 10px">
+                                        <ul class="nav nav-pills" style="margin: 0 auto">
+                                          <li class="nav-item" *ngFor="let p of pagesCount ; let i=index">                                      
+                                            <a class="nav-link" href="" (click)="setPage(i,$event)"
+                                             [ngClass]="{'active':i==page}" >{{i+1}}</a>
+                                          </li>
+                                        </ul>
+                                </div>
+
+                                  <!-- end pagination-->
+                      
+              </div>
+          </div>
+        </div>  
+      </div>
+  </div>

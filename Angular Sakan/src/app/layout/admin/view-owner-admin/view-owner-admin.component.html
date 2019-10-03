@@ -1,0 +1,26 @@
+<h4 class='alert alert-success text-center'>
+    صفحة عرض تفاصيل اصحاب العقارات
+</h4>
+
+<nav aria-label="breadcrumb" dir='rtl'>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/admin/adminPage"> الصفحه الرئيسيه </a></li>
+        <li class="breadcrumb-item active" aria-current="page"> عرض التفاصيل </li>
+    </ol>
+</nav>
+
+<div class="all-page text-center container">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <img src="{{selectedOwner.imgUrlOwner}}" alt="image-user" class="rounded-circle img-thumbnail">
+        </div>
+
+        <div class="col-md-12">
+            <h1 class='name'>{{selectedOwner.fullName}}</h1>
+            <h3 class='username'>{{selectedOwner.email}}</h3>
+            <h4 class='phone'>{{selectedOwner.phone}}</h4>
+        </div>
+    </div>
+</div>

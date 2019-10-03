@@ -1,0 +1,36 @@
+<h4 class='alert alert-success text-center'>
+    صفحة عرض تفاصيل العقارات
+</h4>
+
+<nav aria-label="breadcrumb" dir='rtl'>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/admin/adminPage"> الصفحه الرئيسيه </a></li>
+        <li class="breadcrumb-item active" aria-current="page"> عرض التفاصيل </li>
+    </ol>
+</nav>
+
+<div class="all-page text-center container">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <img src="{{selectedPost.ImageUrl}}"
+             alt="image-user" class="rounded-circle img-thumbnail">
+        </div>
+
+        <div class="col-md-12" dir="rtl" style="text-align: center">
+                        <h3 class='name'> التاريخ : {{postDate}}</h3>
+                        <h3 class='name'>المحافظه:{{selectedPost.Governar}} </h3>
+                        <h3 class='name'>المنطقه:{{selectedPost.District}}</h3>
+                        <h3 class='name'> الشارع : {{selectedPost.Street}}</h3>
+                        <h3 class='name'> المساحه : {{selectedPost.Area}} متر</h3>
+                        <h3 class='name'> السعر :{{selectedPost.Price}} جنية</h3>
+                        <h3 class='name'> التفاصيل : {{selectedPost.Details}}</h3>
+                        <h3 class='name'> عدد الغرف : {{selectedPost.NumberOfRooms}}</h3>
+                        <h3 class='name'> عدد الاسره : {{selectedPost.NumberOfBeds}}</h3>
+                        <h3 class='name'> عدد الاسره المتاحه : {{selectedPost.Available_NumberOfBeds}}</h3>
+                        <h3 class='name'> رقم موبايل صاحب العقار  :{{ownerOfPost.phone}}</h3>
+        </div>
+    </div>
+</div>
+

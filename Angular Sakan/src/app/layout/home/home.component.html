@@ -1,0 +1,312 @@
+
+<meta charset="utf-8">
+
+<div class="container-fluid" style="width: 100%">
+
+  <div class="addImgBackground">
+
+<br>
+<div class="row justify-content-center align-items-center" style="padding-top: 55px"
+ id="searchForFlatsSection">
+      <h1>البحث عن عقار</h1>
+</div>
+
+
+<form class='row rtlDirection rtl' #frm="ngForm" (ngSubmit)="goToSearch()">
+<div class="col-sm-3 col-6 row dirRTL" dir="rtl">  
+ <label class="labelMR">المحافظه</label> <br>
+ <select [formControl]="governar" name="governar" required>
+ <option></option>    
+ <option *ngFor="let govr of listGovernar"> &nbsp;&nbsp; {{govr}}</option>
+ </select>
+</div>
+
+<div class="col-sm-3 col-6 row dirRTL" dir="rtl">  
+<label class="labelMR">المنطقه</label> <br>
+<select [formControl]="district">
+<option></option>    
+<option *ngFor="let dist of listDistrict" style="text-align: left"> &nbsp;&nbsp; {{dist}}</option>
+</select>
+</div>  
+
+<div class="col-sm-3 col-6 row dirRTL" dir="rtl">   
+<label class="labelMR">اقل سعر</label> <br>
+<select [formControl]="minPrice">
+<option></option>    
+<option>&nbsp;&nbsp;500</option>
+<option>&nbsp;&nbsp;700</option>
+<option>&nbsp;&nbsp;900</option>
+<option>&nbsp;&nbsp;1000</option>
+<option>&nbsp;&nbsp;1200</option>
+<option>&nbsp;&nbsp;1400</option>
+<option>&nbsp;&nbsp;1500</option>
+<option>&nbsp;&nbsp;1800</option>
+<option>&nbsp;&nbsp;2000</option>
+</select>
+</div>  
+
+<div class="col-sm-3 col-6 row dirRTL" dir="rtl">    
+<label class="labelMR">اعلي سعر</label> <br>
+<select [formControl]="maxPrice">
+<option></option>    
+<option>&nbsp;&nbsp;2100</option>
+<option>&nbsp;&nbsp;2300</option>
+<option>&nbsp;&nbsp;2500</option>
+<option>&nbsp;&nbsp;2600</option>
+<option>&nbsp;&nbsp;2800</option>
+<option>&nbsp;&nbsp;2900</option>
+<option>&nbsp;&nbsp;3200</option>
+<option>&nbsp;&nbsp;3400</option>
+<option>&nbsp;&nbsp;3600</option>
+<option>&nbsp;&nbsp;3800</option>
+<option>&nbsp;&nbsp;4000</option>
+<option>&nbsp;&nbsp;4500</option>
+<option>&nbsp;&nbsp;5000</option>
+</select>
+</div>  
+
+
+<div class="col-sm-3 col-6 row dirRTL" dir="rtl">  
+    <label class="labelMR">عدد الغرف</label> <br>
+    <select [formControl]="numberOfRooms">
+    <option></option>    
+    <option>&nbsp;&nbsp;1</option>
+    <option>&nbsp;&nbsp;2</option>
+    <option>&nbsp;&nbsp;3</option>
+    <option>&nbsp;&nbsp;4</option>
+    <option>&nbsp;&nbsp;5</option>
+    </select>
+</div> 
+
+
+<div class="col-sm-3 col-6 row dirRTL" dir="rtl">  
+        <label class="labelMR">عدد السرير</label> <br>
+        <select  [formControl]="numberOfBeds">
+        <option></option> 
+        <option>&nbsp;&nbsp;1</option>
+        <option>&nbsp;&nbsp;2</option>
+        <option>&nbsp;&nbsp;3</option>
+        <option>&nbsp;&nbsp;4</option>   
+        <option>&nbsp;&nbsp;5</option>   
+        <option>&nbsp;&nbsp;6</option>   
+        <option>&nbsp;&nbsp;7</option>  
+        <option>&nbsp;&nbsp;8</option>
+        <option>&nbsp;&nbsp;9</option> 
+        <option>&nbsp;&nbsp;10</option>         
+        </select>
+</div>
+       
+      
+       
+ <div class="col-sm-3 col-6 row dirRTL" dir="rtl">   
+       <label class="labelMR">اقل مساحة</label> <br>
+       <select [formControl]="minArea">
+       <option>50</option>   
+       <option>75</option> 
+       <option>100</option> 
+       <option>150</option> 
+       <option>200</option>    
+      </select>
+ </div>  
+       
+  <div class="col-sm-3 col-6 row dirRTL" dir="rtl">    
+       <label class="labelMR">اعلي مساحه</label> <br>
+       <select [formControl]="maxArea">
+       <option></option> 
+       <option>230</option>  
+       <option>250</option>    
+       <option>300</option> 
+       <option>330</option>  
+       <option>350</option> 
+       <option>400</option> 
+       <option>450</option> 
+       <option>500</option> 
+       </select>
+  </div>  
+
+
+  <button type="submit" style="margin: 20px"
+   class="col-md-1 btn btn-primary btn-sm btn-block buttonSearch" > بحـث  &nbsp;
+  </button>
+  </form>
+
+
+</div>
+
+
+<div id="distinctFlatsSection" style="padding-top:65px;"
+class="row justify-content-center align-items-center" *ngIf="distinctFlats">
+        <h1>عقارات مميزة</h1>
+</div>
+<br>
+<div class="row">
+            
+<div class="col-sm-12" style="padding-right: 0">
+																
+				<!--Carousel Wrapper-->
+<div id="carousel-with-lb" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+  
+  <!--Indicators-->
+  <ol class="carousel-indicators" *ngIf="distinctFlats">
+    <li data-target="#carousel-with-lb" data-slide-to="0" class="active secondary-color"
+    *ngIf="point1Check"></li>
+    <li data-target="#carousel-with-lb" data-slide-to="1" class="secondary-color"
+    *ngIf="point2Check"></li>
+    <li data-target="#carousel-with-lb" data-slide-to="2" class="secondary-color"
+    *ngIf="point3Check"></li>
+  </ol>
+
+  <!--/.Indicators-->
+
+  <!--Slides and lightbox-->
+
+  <div class="carousel-inner mdb-lightbox" role="listbox">
+    <div id="mdb-lightbox-ui"></div>
+    <!--First slide-->
+    <div class=" carousel-item active text-center">
+
+          <div class="card col-md-3 d-md-inline-block mr-5 pt-3" *ngIf="post1.status">
+		    <img class="card-img-top" src="{{post1.ImageUrl}}" alt="Card image" style="width:100%;height: 200px;">
+                    <div style="background-color: black;color: white;text-align: left;padding-right: 5px;text-align: right" dir="rtl">
+                        <i class="fas fa-calendar-week"></i> من {{p1FromDay}} يوماً</div>
+            <div class="card-body">
+		      <h4 class="card-title">{{post1.governar}}</h4>
+		      <p class="card-text">{{post1.Details}}</p>
+              <button class="btn btn-primary" (click)="showPost(post1._id)">عرض التفاصيــل</button>
+              <hr>
+              <i class="fas fa-pound-sign"></i> : {{post1.Price}}  <i class="fas fa-ruler-combined"></i> : {{post1.Area}}m
+              <i class="fas fa-procedures"></i> : {{post1.NumberOfBeds}} &nbsp;<i class="fas fa-bed"></i> : {{post1.Available_NumberOfBeds}}
+             </div>
+		  </div>
+		  <div class="card col-md-3 d-md-inline-block mr-5 pt-3" *ngIf="post2.status">
+		    <img class="card-img-top" src="{{post2.ImageUrl}}" alt="Card image"  style="width:100%;height: 200px;">
+                    <div style="background-color: black;color: white;text-align: left;padding-right: 5px;text-align: right" dir="rtl">
+                        <i class="fas fa-calendar-week"></i> من {{p2FromDay}} يوماً</div>
+            <div class="card-body">
+		      <h4 class="card-title">{{post1.governar}}</h4>
+		      <p class="card-text">{{post2.Details}}</p>
+                      <button class="btn btn-primary" (click)="showPost(post2._id)">عرض التفاصيــل</button>
+                <hr>
+              <i class="fas fa-pound-sign"></i> : {{post2.Price}} &nbsp;&nbsp; <i class="fas fa-ruler-combined"></i>: {{post2.Area}} m
+              <i class="fas fa-procedures"></i> : {{post2.NumberOfBeds}} &nbsp;&nbsp;<i class="fas fa-bed"></i> : {{post2.Available_NumberOfBeds}}            </div>
+		  </div>
+
+		  <div class="card col-md-3 d-md-inline-block pt-3" *ngIf="post3.status">
+		    <img class="card-img-top" src="{{post3.ImageUrl}}" alt="Card image"  style="width:100%;height: 200px;">
+            <div style="background-color: black;color: white;text-align: left;padding-right: 5px;text-align: right" dir="rtl">
+            <i class="fas fa-calendar-week"></i> من {{p3FromDay}} يوماً</div>
+            <div class="card-body">
+		      <h4 class="card-title">{{post1.governar}}</h4>
+		      <p class="card-text">{{post3.Details}}</p>
+                      <button class="btn btn-primary" (click)="showPost(post3._id)">عرض التفاصيــل</button>
+            <hr>
+            <i class="fas fa-pound-sign"></i> : {{post3.Price}} &nbsp;&nbsp; <i class="fas fa-ruler-combined"></i>: {{post3.Area}} m
+            <i class="fas fa-procedures"></i> : {{post3.NumberOfBeds}} &nbsp;&nbsp;<i class="fas fa-bed"></i> : {{post3.Available_NumberOfBeds}}            </div>
+		  </div>
+
+    </div>
+    <!--/.First slide-->
+
+    <!--Second slide-->
+    <div class="carousel-item text-center">
+
+       <div class="card col-md-3 d-md-inline-block mr-5 pt-3" *ngIf="post4.status">
+		    <img class="card-img-top" src="{{post4.ImageUrl}}" alt="Card image"  style="width:100%;height: 200px;">
+                    <div style="background-color: black;color: white;text-align: left;padding-right: 5px;text-align: right" dir="rtl">
+                        <i class="fas fa-calendar-week"></i> من {{p4FromDay}} يوماً</div>
+            <div class="card-body">
+		      <h4 class="card-title">{{post1.governar}}</h4>
+		      <p class="card-text">{{post4.Details}}</p>
+                      <button class="btn btn-primary" (click)="showPost(post4._id)">عرض التفاصيــل</button>
+              <hr>
+              <i class="fas fa-pound-sign"></i> : {{post4.Price}} &nbsp;&nbsp; <i class="fas fa-ruler-combined"></i>: {{post4.Area}} m
+              <i class="fas fa-procedures"></i> : {{post4.NumberOfBeds}} &nbsp;&nbsp;<i class="fas fa-bed"></i> : {{post4.Available_NumberOfBeds}}		    </div>
+		  </div>
+
+		  <div class="card col-md-3 d-md-inline-block mr-5 pt-3" *ngIf="post5.status">
+		    <img class="card-img-top" src="{{post5.ImageUrl}}" alt="Card image"  style="width:100%;height: 200px;">
+            <div style="background-color: black;color: white;text-align: left;padding-right: 5px;text-align: right" dir="rtl">
+                        <i class="fas fa-calendar-week"></i> من {{p5FromDay}} يوماً</div>
+            <div class="card-body">
+		      <h4 class="card-title">{{post1.governar}}</h4>
+		      <p class="card-text">{{post5.Details}}</p>
+                      <button class="btn btn-primary" (click)="showPost(post5._id)">عرض التفاصيــل</button>
+              <hr>
+              <i class="fas fa-pound-sign"></i> : {{post5.Price}} &nbsp;&nbsp; <i class="fas fa-ruler-combined"></i>: {{post5.Area}} m
+              <i class="fas fa-procedures"></i> : {{post5.NumberOfBeds}} &nbsp;&nbsp;<i class="fas fa-bed"></i> : {{post5.Available_NumberOfBeds}}		    </div>
+		  </div>
+
+		  <div class="card col-md-3 d-md-inline-block pt-3" *ngIf="post6.status">
+		    <img class="card-img-top" src="{{post6.ImageUrl}}" alt="Card image"  style="width:100%;height: 200px;">
+                    <div style="background-color: black;color: white;text-align: left;padding-right: 5px;text-align: right" dir="rtl">
+                        <i class="fas fa-calendar-week"></i> من {{p6FromDay}} يوماً</div>
+            <div class="card-body">
+		      <h4 class="card-title">{{post1.governar}}</h4>
+		      <p class="card-text">{{post6.Details}}</p>
+                      <button class="btn btn-primary" (click)="showPost(post6._id)">عرض التفاصيــل</button>
+              <hr>
+              <i class="fas fa-pound-sign"></i> : {{post6.Price}} &nbsp;&nbsp; <i class="fas fa-ruler-combined"></i>: {{post6.Area}} m
+              <i class="fas fa-procedures"></i> : {{post6.NumberOfBeds}} &nbsp;&nbsp;<i class="fas fa-bed"></i> : {{post6.Available_NumberOfBeds}}	    </div>
+		  </div>
+    </div>
+    <!--/.Second slide-->
+
+    <!--Third slide-->
+    <div class="carousel-item text-center">
+
+       <div class="card col-md-3 d-md-inline-block mr-5 pt-3" *ngIf="post7.status">
+		    <img class="card-img-top" src="{{post7.ImageUrl}}" alt="Card image"  style="width:100%;height: 200px;">
+                    <div style="background-color: black;color: white;text-align: left;padding-right: 5px;text-align: right" dir="rtl">
+                        <i class="fas fa-calendar-week"></i> من {{p7FromDay}} يوماً</div>
+            <div class="card-body">
+		      <h4 class="card-title">{{post1.governar}}</h4>
+		      <p class="card-text">{{post7.Details}}</p>
+                      <button class="btn btn-primary" (click)="showPost(post7._id)">عرض التفاصيــل</button>
+              <hr>
+              <i class="fas fa-pound-sign"></i> : {{post7.Price}} &nbsp;&nbsp; <i class="fas fa-ruler-combined"></i>: {{post7.Area}} m
+              <i class="fas fa-procedures"></i> : {{post7.NumberOfBeds}} &nbsp;&nbsp;<i class="fas fa-bed"></i> : {{post7.Available_NumberOfBeds}}		    
+            </div>
+		  </div>
+
+		  <div class="card col-md-3 d-md-inline-block mr-5 pt-3 " *ngIf="post8.status">
+		    <img class="card-img-top" src="{{post8.ImageUrl}}" alt="Card image"  style="width:100%;height: 200px;">
+                    <div style="background-color: black;color: white;text-align: left;padding-right: 5px;text-align: right" dir="rtl">
+                        <i class="fas fa-calendar-week"></i> من {{p8FromDay}} يوماً</div>
+            <div class="card-body">
+		      <h4 class="card-title">{{post1.governar}}</h4>
+		      <p class="card-text">{{post8.Details}}</p>
+                      <button class="btn btn-primary" (click)="showPost(post8._id)">عرض التفاصيــل</button>
+              <hr>
+              <i class="fas fa-pound-sign"></i> : {{post8.Price}} &nbsp;&nbsp; <i class="fas fa-ruler-combined"></i>: {{post8.Area}} m
+              <i class="fas fa-procedures"></i> : {{post8.NumberOfBeds}} &nbsp;&nbsp;<i class="fas fa-bed"></i> : {{post8.Available_NumberOfBeds}}		    </div>
+		  </div>
+
+		  <div class="card col-md-3 d-md-inline-block pt-3" *ngIf="post9.status">
+		    <img class="card-img-top" src="{{post9.ImageUrl}}" alt="Card image"  style="width:100%;height: 200px;">
+                 <div style="background-color: black;color: white;text-align: left;padding-right: 5px;text-align: right" dir="rtl">
+                        <i class="fas fa-calendar-week"></i> من {{p9FromDay}} يوماً</div>
+            <div class="card-body">
+		      <h4 class="card-title">{{post1.governar}}</h4>
+		      <p class="card-text">{{post9.Details}}</p>
+                      <button class="btn btn-primary" (click)="showPost(post9._id)">عرض التفاصيــل</button>
+              <hr>
+              <i class="fas fa-pound-sign"></i> : {{post9.Price}} &nbsp;&nbsp; <i class="fas fa-ruler-combined"></i>: {{post9.Area}} m
+              <i class="fas fa-procedures"></i> : {{post9.NumberOfBeds}} &nbsp;&nbsp;<i class="fas fa-bed"></i> : {{post9.Available_NumberOfBeds}}		    </div>
+		  </div>
+
+    </div>
+    <!--/.Third slide-->
+          	
+  </div>
+  <!--/.Slides-->
+ 
+</div>
+<!--/.Carousel Wrapper-->
+
+			</div>
+           	
+
+    </div>
+    <br><br><br><br>
+</div>

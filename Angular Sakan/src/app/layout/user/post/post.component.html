@@ -1,0 +1,202 @@
+<h1  class='text-center alert bg-primary alert-sm font-italic mb-0>' style="color:whitesmoke"> إضافة عقار للإيجار </h1> 
+<div class="page" style="padding-bottom: 10px">
+<form class="col-md-6  text-body offset-md-3 align-content-center bg-light"  style=" opacity: 0.9" [formGroup]="PostForm"  (ngSubmit)="onSubmit()">
+  <div class="col-md-6 offset-md-3">
+      <div class="form-group row"  style="padding-top:25px" dir="rtl">
+        <label for="exampleFormControlGovernar" >المحافظة :</label> &nbsp;&nbsp;&nbsp;
+        <select class="form-control selectpicker" data-style="btn btn-link" id="exampleFormControlGovernar" formControlName="Governar" required>
+          <option>أسيوط</option> 
+        </select>
+        <div class="alert alert-light"
+                *ngIf="Governar.touched && Governar.invalid">
+                <div class="badge badge-primary" *ngIf="Governar?.errors['required']">
+                    من فضلك أدخل أسم المحافظة
+                </div>
+
+                <!-- <div class="badge badge-success" *ngIf="Governar?.errors['minlength']">يجب
+                    ان
+                    لا يقل عن
+                    {{ Governar?.errors['minlength'].requiredLength }} حرف
+                </div> -->
+        </div>
+      </div>
+    
+      <div class="form-group row"  dir="rtl">
+        <label for="exampleFormControlDistrict">المنطقة:</label>
+        <select class="form-control selectpicker" data-style="btn btn-link" id="exampleFormControlDistrict" formControlName="District" required>
+          <option>أسيوط</option>
+          <option>قوصية</option>
+          <option>ديروط</option>
+          <option>أبنوب</option>
+          <option>منفلوط</option>
+          <option>أبو تيج</option>
+          <option>الغنايم</option>
+          <option>ساحل سليم</option>
+          <option>صدفا</option>
+          <option>البداري</option>
+          <option>الفتح</option>
+        </select>
+        <div class="alert alert-light"
+        *ngIf="District.touched && District.invalid">
+        <div class="badge badge-primary" *ngIf="District?.errors['required']">
+            من فضلك أدخل أسم المنطقة
+        </div>
+
+        <!-- <div class="badge badge-success" *ngIf="District?.errors['minlength']">يجب
+            ان
+            لا يقل عن
+            {{ District?.errors['minlength'].requiredLength }} حرف
+        </div> -->
+        </div>
+      </div>
+    
+      <div class="form-group row"   dir="rtl">
+        <label for="exampleInputStreet">الشارع:</label>
+        <input type="text" class="form-control" id="exampleInputStreet" placeholder="الشارع" formControlName="Street" required minlength="5">
+        <div class="alert alert-light"
+                                    *ngIf="Street.touched && Street.invalid">
+                                    <div class="badge badge-primary" *ngIf="Street?.errors['required']">
+                                        من فضلك ادخل الأســم
+                                    </div>
+
+                                    <div class="badge badge-success" *ngIf="Street?.errors['minlength']">يجب ان
+                                        لا
+                                        يقل عن
+                                        {{ Street?.errors['minlength'].requiredLength }} حرف
+                                    </div>
+                                </div>
+      </div>
+    
+      <div class="form-group row"   dir="rtl">
+        <label for="exampleInputArea">المساحة:</label>
+        <input type="number" class="form-control" id="exampleInputArea" placeholder="المساحة" 
+        formControlName="Area" min="90" minlength="2"  required>
+        <div class="alert alert-light"
+        *ngIf="Area.touched && Area.invalid">
+        <div class="badge badge-primary" *ngIf="Area?.errors['required']">
+            من فضلك ادخل المساحة
+        </div>
+
+        <div class="badge badge-success" *ngIf="Area?.errors['minlength']">يجب ان
+            لا
+            يقل عن
+            {{ Area?.errors['minlength'].requiredLength }} حرف
+        </div>
+    </div>
+      </div>
+    
+      <div class="form-group row"   dir="rtl">
+        <label for="exampleInputNumberOfRooms">عدد الغرف :</label>
+        <input type="number" class="form-control" id="exampleInputNumberOfRooms" placeholder="عدد الغرف"
+         formControlName="NumberOfRooms" min="1" minlength="1" required>
+        
+         <div class="alert alert-light"
+        *ngIf="NumberOfRooms.touched && NumberOfRooms.invalid">
+        <div class="badge badge-primary" *ngIf="NumberOfRooms?.errors['required']">
+            من فضلك ادخل عدد الغرف
+        </div>
+
+        <div class="badge badge-success" *ngIf="NumberOfRooms?.errors['minlength']">يجب ان
+            لا
+            يقل عن
+            {{ NumberOfRooms?.errors['minlength'].requiredLength }} حرف
+        </div>
+       
+    </div>
+      </div>
+    
+      <div class="form-group row"   dir="rtl">
+        <label for="exampleInputPrice"> السعر :</label>
+        <input type="number" class="form-control" id="exampleInputPrice" placeholder="السعر"
+         formControlName="Price" min="100" minlength="3"  required>
+
+         <div class="alert alert-light"
+         *ngIf="Price.touched && Price.invalid">
+         <div class="badge badge-primary" *ngIf="Price?.errors['required']">
+             من فضلك ادخل السعر
+         </div>
+ 
+         <div class="badge badge-success" *ngIf="Price?.errors['minlength']">يجب ان
+             لا
+             يقل عن
+             {{ Price?.errors['minlength'].requiredLength }} حرف
+         </div>
+     </div>
+      </div>
+    
+      <div class="form-group row"   dir="rtl">
+        <label for="exampleInputNumberOfBeds">عدد الاسرة :</label>
+        <input type="number" class="form-control" id="exampleInputNumberOfBeds" placeholder="عدد الاسرة"
+         formControlName="NumberOfBeds" min="1" minlength="1" pattern="[0-9]" required> 
+         <div class="alert alert-light" *ngIf="NumberOfBeds.touched && NumberOfBeds.invalid">
+         <div class="badge badge-primary" *ngIf="NumberOfBeds?.errors['required']">
+             من فضلك ادخل عدد الاسرة
+         </div>
+ 
+         <div class="badge badge-success" *ngIf="NumberOfBeds?.errors['minlength']">يجب ان
+             لا
+             يقل عن
+             {{ NumberOfBeds?.errors['minlength'].requiredLength }} حرف
+         </div>
+         
+     </div>
+      </div>
+    
+      <div class="form-group row"   dir="rtl">
+        <label for="exampleInputAvailable_NumberOfBeds">عدد الاسرة الفارغة :</label>
+        <input type="number" class="form-control" id="exampleInputAvailable_NumberOfBeds"
+         placeholder="عدد الاسرة الفارغة" formControlName="Available_NumberOfBeds" min="1" minlength="1" required>
+         <div class="alert alert-light" *ngIf="Available_NumberOfBeds.touched && Available_NumberOfBeds.invalid">
+          <div class="badge badge-primary" *ngIf="Available_NumberOfBeds?.errors['required']">
+              من فضلك ادخل عدد الاسرةالفارغة
+          </div>
+  
+          <div class="badge badge-success" *ngIf="Available_NumberOfBeds?.errors['minlength']">يجب ان
+              لا
+              يقل عن
+              {{ Available_NumberOfBeds?.errors['minlength'].requiredLength }} حرف
+          </div>
+         
+      </div>
+      </div>
+
+      <div class="form-group row"   dir="rtl">
+        <label for="exampleInput_Details">التفاصيل :</label>
+        <input type="text" class="form-control" minlength="10" maxlength="25" 
+        id="exampleInput_Details" placeholder="تفاصيل العقار" 
+        formControlName="Details" minlength="8" required>
+        <div class="alert alert-light" *ngIf="Details.touched && Details.invalid">
+          <div class="badge badge-primary" *ngIf="Details?.errors['required']">
+              من فضلك ادخل عدد الاسرةالفارغة
+          </div>
+  
+          <div class="badge badge-success" *ngIf="Details?.errors['minlength']">يجب ان
+              لا
+              يقل عن
+              {{ Details?.errors['minlength'].requiredLength }} حرف
+          </div>
+      </div>
+      </div>
+    
+      <div class="form-group form-file-upload form-file-multiple row" dir="rtl">
+        <input type="file" accept="image/*" ng2FileSelect [uploader]="uploader" class="inputFileHidden" formControlName="ImageUrl" required>
+        <div class="alert alert-light" *ngIf="ImageUrl.touched && ImageUrl.invalid">
+          <div class="badge badge-primary" *ngIf="ImageUrl?.errors['required']">
+              من فضلك اختر صــوره
+          </div>
+      </div>
+        <div class="input-group">
+            <input type="text" class="form-control inputFileVisible" placeholder="Single Files" multiple>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-fab btn-round btn-info">
+                    <i class="material-icons">layers</i>
+                </button>
+            </span>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center" style="margin:5%;">
+          <button   class="btn btn-primary btn-fab btn-round" type="submit" (click)="uploader.uploadAll()"  [disabled]="!PostForm.valid"> أضافة عقار </button>
+      </div>
+  </div>
+</form>
+</div>

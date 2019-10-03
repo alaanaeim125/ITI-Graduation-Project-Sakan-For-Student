@@ -1,0 +1,105 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+<div class="container-fluid mt-10" id="contatti">
+
+    <div class="row" style="padding-bottom: 20px;">
+      <div class="col-sm-6 maps">
+         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3549.0536430426987!2d31.172862314526643!3d27.186050754815106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14450bfcc66b0f27%3A0x5c93b0105928bd21!2sInformation+Technology+Institute+-+ITI!5e0!3m2!1sen!2seg!4v1564265530850!5m2!1sen!2seg"
+         frameborder="0" style="border:0;width: 100%;height: 100%;" allowfullscreen></iframe>
+        </div>
+
+      <div class="col-sm-6" dir="rtl" style="text-align: right">
+        <h2 class="text-uppercase mt-3 mb-4 font-weight-bold text-white">التواصل معنا</h2>
+        <form #sendEmailForm="ngForm" (ngSubmit)="sendEmailForm.valid && sentEmailToAdmin(sendEmailForm)">
+          <div class="row">
+            <div class="col-sm-6">
+              <div>
+                <input type="text" #fullname="ngModel" [(ngModel)]="fullName" name="fullName"
+                 placeholder="ادخال الاسم"  minlength="3" maxlength="20" class="form-control"
+                required [ngClass]="{ 'invalid-textbox' : sendEmailForm.submitted && !fullname.valid}">
+                <br>
+                <div *ngIf="sendEmailForm.submitted && fullname.errors">
+                  <label *ngIf="fullname.errors.required">ادخل الاسم</label>
+                  <label *ngIf="fullname.errors.minlength"> علي الاقل ثلاث احرف</label>
+                  <label *ngIf="fullname.errors.maxlength"> علي الاكثر عشرين احرف</label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input type="email" #Email="ngModel" [(ngModel)]="email" name="email" placeholder="ادخال الايميل"
+                required [pattern]="emailRegex" class="form-control"
+                [ngClass]="{ 'invalid-textbox' : sendEmailForm.submitted && !Email.valid }">
+                <br>
+                <div *ngIf="sendEmailForm.submitted && Email.errors">
+                    <label *ngIf="Email.errors.required"> ادخل الايميل</label>
+                    <label *ngIf="Email.errors.pattern">ايميل خطأ</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div>
+                <input type="text" #subject="ngModel" [(ngModel)]="emailSubject" name="emailSubject"
+                 placeholder="ادخال الموضوع"  minlength="3" maxlength="25" class="form-control"
+                required [ngClass]="{ 'invalid-textbox' : sendEmailForm.submitted && !subject.valid}">
+                <br>
+                <div *ngIf="sendEmailForm.submitted && subject.errors">
+                  <label *ngIf="subject.errors.required">ادخل الموضوع</label>
+                  <label *ngIf="subject.errors.minlength"> علي الاقل ثلاث احرف</label>
+                  <label *ngIf="subject.errors.maxlength"> علي الاكثر خمس وعشرين احرف</label>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-sm-6">
+              <div>
+                <input type="password" #pass="ngModel" [(ngModel)]="password" name="password"
+                 placeholder="ادخال الباسورد"  minlength="3" maxlength="15" class="form-control"
+                required [ngClass]="{ 'invalid-textbox' : sendEmailForm.submitted && !pass.valid}">
+                <br>
+                <div *ngIf="sendEmailForm.submitted && pass.errors">
+                  <label *ngIf="pass.errors.required">ادخل الباسورد</label>
+                  <label *ngIf="pass.errors.minlength"> علي الاقل 6 احرف</label>
+                  <label *ngIf="pass.errors.maxlength"> علي الاكثر خمس عشر احرف</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="form-group">
+                <textarea [(ngModel)]="emailBody" class="form-control"   minlength="5"
+                placeholder="ارسال شكوي" name="emailBody" #body="ngModel" rows="3" required ></textarea>
+                <div *ngIf="sendEmailForm.submitted && body.errors">
+                  <label *ngIf="body.errors.required"> ادخل الشكوي</label>
+                  <label *ngIf="body.errors.minlength"> علي الاقل خمس احرف</label>
+              </div>
+              </div>
+            </div>
+            <div class="col-12">
+            <div class="form-group">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="checked" [(ngModel)]="checked" required>
+                <br>
+                <label class="form-check-label" >
+                  الموافقه علي الشروط والسياسات
+                </label>
+              </div>
+            </div>
+            </div>
+            <div class="col-12">
+              <input class="btn btn-light" [disabled]="!checked" type="submit" value="ارسال" >
+            </div>
+          </div>
+        </form>
+      
+      </div>
+
+    </div>
+</div>

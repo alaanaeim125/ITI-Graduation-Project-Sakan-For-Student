@@ -1,0 +1,62 @@
+.form-control.ng-invalid.ng-touched {
+  border-right: 9px solid red;
+}
+
+
+.form-control.ng-valid.ng-touched {
+  border-right: 9px solid green;
+}
+
+
+.login-admin {
+  margin: 25px auto;
+  text-align: center;
+}
+
+.badge1 {
+  padding: 5px;
+}
+
+input {
+  text-align: right;
+}
+
+.log-img {
+  border-left: 3px solid red;
+  padding: 20px;
+  width: 106%;
+  background-color: cornflowerblue;
+  margin-left: -15px;
+  border-radius: 20px;
+}
+
+.log-img img {
+  width: 100%;
+  height: 370px;
+
+}
+
+.part1-login {
+  background-color: #c8d7f3;
+  padding: 20px 40px 20px 20px;
+  margin-right: -20px;
+  border-radius: 20px;
+}
+
+h1 {
+  font-size: 1.5em;
+  font-weight: bold;
+  border-bottom: 1.5px solid #ef413d;
+  padding: 20px 0px 10px 0px;
+  width: 40%;
+  margin: 0px auto 20px auto;
+  color: #444;
+}
+
+
+
+.badge {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 5px;
+}

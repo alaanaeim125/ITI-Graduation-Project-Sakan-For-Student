@@ -1,0 +1,62 @@
+<div class="col-md-6 offset-md-3 text-center" id="loginSection">
+    <form [formGroup]="form" (ngSubmit)="login()">
+        <h1 class='login-header1'>دخول المشتركين</h1>
+        <div class="login-part1">
+            <div class="form-group">
+                <label for="email">ادخل البريد الالكترونى</label>
+                <input formControlName="email" type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                    maxlength="28" autocomplete="off">
+
+                <div class="alert alert-light" *ngIf="email.touched && email.invalid">
+                    <div class="badge badge-primary" *ngIf="email?.errors['required']">من فضلك ادخل الايميل</div>
+
+                    <div class="badge badge-info" *ngIf="email?.errors['pattern']">
+                        هذه الايميل غير صحيح
+                    </div>
+
+                    <div class="badge badge-success" *ngIf="email?.errors['minlength']">يجب ان لا يقل عن
+                        {{ email?.errors['minlength'].requiredLength }} حرف</div>
+
+                    <div class="badge badge-warning" *ngIf="email?.errors['cannotContainSpace']">
+                        الايميل لا يحتوى على مسافات
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="password">ادخل كلمه السر</label>
+                <input formControlName="password" type="password" class="form-control" id="password" maxlength="28">
+
+                <div class="alert alert-light" *ngIf="password.touched && password.invalid">
+                    <div class="badge badge-primary" *ngIf="password?.errors['required']">
+                        من فضلك ادخل كلمة السر
+                    </div>
+
+                    <div class="badge badge-success" *ngIf="password?.errors['minlength']">يجب ان لا يقل عن
+                        {{ password?.errors['minlength'].requiredLength }} حرف
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group last">
+                <label for="about-You">عرفنا عن نفسك</label>
+                <select formControlName="type" class="form-control" id="about-You">
+                    <option *ngFor="let option of selectOption" [value]="option.id">{{option.type}}</option>
+                </select>
+            </div>
+
+            <!----a class="forget" routerLink=""> نسيت كلمه السر </a-->
+            <button class="btn btn-danger btn-login" [disabled]='!form.valid'>تسجيل دخــول
+                <i class="fa fa-sign-in fa-rotate-180" aria-hidden="true"></i></button>
+        </div>
+    </form>
+
+    <div class="login-part2">
+        <h1 class="login-header2">ليس لديك حساب؟</h1>
+        <button class="btn btn-danger btn-createAccount" (click)="goToSignUp()" >إنشاء حساب جــديد
+            <i class="fa fa-user-plus" aria-hidden="true"></i>
+        </button>
+    </div>
+
+
+</div>

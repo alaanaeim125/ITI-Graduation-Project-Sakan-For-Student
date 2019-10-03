@@ -1,0 +1,113 @@
+<h1  class='text-center alert bg-primary alert-sm font-italic mb-0>' style="color:whitesmoke"> تعديل البيانات الشخصية </h1> 
+<div class="page">
+<form  id="frm" class="col-md-6  text-body offset-md-3 align-content-center bg-light" style=" opacity: 0.9" [formGroup]="OwnerForm"  (ngSubmit)="onSubmit()">
+  <div class="col-md-7  text-body offset-md-3" >
+      
+      <input type="text" class="form-control"  [(ngModel)]="selected._id" id="exampleInput_id"  formControlName="_id" hidden>
+
+      <input type="text" class="form-control"  [(ngModel)]="selected.status" id="exampleInputStatus"  formControlName="status" hidden>
+      
+      <div class="form-group row"   dir="rtl">
+        <label for="exampleInputfullName">الاسم :</label>
+        <input type="text" class="form-control"  [(ngModel)]="selected.fullName" id="exampleInputfullName" 
+        placeholder="الاسم" formControlName="fullName" minlength="3" 
+        pattern="^[\u0621-\u064A\u0660-\u0669 ]+$" required >
+
+        <div class="alert alert-light" *ngIf="fullName.touched && fullName.invalid">
+          <div class="badge badge-primary" *ngIf="fullName?.errors['required']">
+            من فضلك ادخل الأســم
+          </div>
+
+          <div class="badge badge-success" *ngIf="fullName?.errors['minlength']">يجب ان
+            لا
+            يقل عن
+            {{ fullName?.errors['minlength'].requiredLength }} حرف
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="form-group row"   dir="rtl">
+        <label for="exampleInputemail">البريد الالكتروني :</label>
+        <input type="text" class="form-control"  [(ngModel)]="selected.email" id="exampleInputemail" placeholder="البريد الالكتروني" formControlName="email" required>
+
+         <div class="alert alert-light" *ngIf="email.touched && email.invalid">
+          <div class="badge badge-primary" *ngIf="email?.errors['required']">من فضلك
+            ادخل
+            الايميل</div>
+
+          <div class="badge badge-info" *ngIf="email?.errors['pattern']">
+            هذه الايميل غير صحيح
+          </div>
+
+          <div class="badge badge-success" *ngIf="email?.errors['minlength']">يجب ان لا
+            يقل عن
+            {{ email?.errors['minlength'].requiredLength }} حرف</div>
+
+          <div class="badge badge-warning" *ngIf="email?.errors['cannotContainSpace']">
+            الايميل لا يحتوى على مسافات
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-group row"   dir="rtl">
+        <label for="exampleInputPassword">كلمة المرور :</label>
+        <input type="password" class="form-control"  [(ngModel)]="selected.password" id="exampleInputpassword" placeholder="كلمة المرور" formControlName="password" required>
+
+        <div class="alert alert-light" *ngIf="password.touched && password.invalid">
+          <div class="badge badge-primary" *ngIf="password?.errors['required']">
+            من فضلك ادخل كلمة السر
+          </div>
+        
+          <div class="badge badge-success" *ngIf="password?.errors['minlength']">يجب ان
+            لا
+            يقل عن
+            {{ password?.errors['minlength'].requiredLength }} حرف
+          </div>
+        </div>
+
+      </div>
+    
+      <div class="form-group row"   dir="rtl">
+        <label for="exampleInputphone"> رقم التليفون :</label>
+        <input type="phone" class="form-control"  [(ngModel)]="selected.phone" id="exampleInputphone"
+         placeholder="رقم التليفون" formControlName="phone" minlength="11" maxlength="11" required>
+
+        <div class="alert alert-light" *ngIf="phone.touched && phone.invalid">
+          <div class="badge badge-primary" *ngIf="phone?.errors['required']">
+            من فضلك ادخل رقم الهاتف
+          </div>
+        
+          <div class="badge badge-info" *ngIf="phone?.errors['minlength']">
+            لا يجب ان يقل عن 11 رقم
+          </div>
+        
+          <div class="badge badge-warning" *ngIf="phone?.errors['cannotContainSpace']">
+            رقم الهاتف لا يحتوى على مسافات
+          </div>
+        </div>
+        
+      </div>
+    
+    
+      <div class="form-group form-file-upload form-file-multiple row"   dir="rtl">
+        <input type="file" accept="image/*" ng2FileSelect [uploader]="uploader" class="inputFileHidden" formControlName="imgUrlOwner" >
+        <div class="input-group">
+            <input type="text" class="form-control inputFileVisible" placeholder="single File" multiple>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-fab btn-round btn-info">
+                    <i class="material-icons">layers</i>
+                </button>
+            </span>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center" style="margin:5%;">
+          <button  class="btn btn-primary btn-fab btn-round" type="submit" (click)="uploader.uploadAll()" [disabled]="!OwnerForm.valid"> حفظ </button>
+      </div>
+  </div>
+</form>
+</div>

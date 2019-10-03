@@ -1,0 +1,21 @@
+
+.pull-right{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+   background-color: #007BFF;
+   border-radius: 100%;
+   padding: 5px 0px;
+}
+
+.pull-right i{
+    opacity: 1;
+    color:#fff;
+	border-radius:100%;
+    padding:5px 10px;
+}
+
+.pull-right i:hover{
+	background:#ED502E;
+
+}

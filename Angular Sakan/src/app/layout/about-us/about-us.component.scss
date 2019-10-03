@@ -1,0 +1,111 @@
+
+.card-body {
+    width: 250px;
+    height: 250px;
+   border-radius: 50%;
+}
+
+.ali {
+    background-image: url('../../../assets/ali2.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.esraa {
+    background-image: url('../../../assets/esraa.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+}
+
+.alaa {
+    background-image: url('../../../assets/alaa.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.bhaa {
+    background-image: url('../../../assets/bahaa.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+}
+
+
+
+
+.bhaa-body, .esraa-body, .alaa-body, .ali-body
+{
+    width: 250px;
+    height: 250px;
+   border-radius: 50%;
+   background-color: rgba(112, 118, 148, 0.78)!important;
+   margin: -20px -20px 0px 0px;
+    opacity: 0;
+    line-height: 50px;
+    color: white;
+
+    transition: opacity 2s linear;
+  -webkit-transition: opacity 2s linear;
+  -moz-transition: opacity 2s linear;
+  -o-transition: opacity 2s linear;
+
+}
+.card-body:hover .bhaa-body{
+  opacity: 0.9;
+  transition: opacity 2s linear;
+  -webkit-transition: opacity 2s linear;
+  -moz-transition: opacity 2s linear;
+  -o-transition: opacity 2s linear;
+}
+
+.card-body:hover .alaa-body{
+    opacity: 0.9;
+    transition: opacity 2s linear;
+    -webkit-transition: opacity 2s linear;
+    -moz-transition: opacity 2s linear;
+    -o-transition: opacity 2s linear;
+  }
+
+  .card-body:hover .esraa-body{
+    opacity: 0.9;
+    transition: opacity 2s linear;
+    -webkit-transition: opacity 2s linear;
+    -moz-transition: opacity 2s linear;
+    -o-transition: opacity 2s linear;
+  }
+
+  .card-body:hover .ali-body{
+    opacity: 0.9;
+    transition: opacity 2s linear;
+    -webkit-transition: opacity 2s linear;
+    -moz-transition: opacity 2s linear;
+    -o-transition: opacity 2s linear;
+  }
+
+.card-body .bhaa-body h5, .card-body .alaa-body h5, .card-body .ali-body h5, .card-body .esraa-body h5 {
+    padding-top: 60px;
+}
+
+
+
+.card-body ul{
+    padding-right: 0;
+    padding-left: 0;
+}
+.card-body ul li {
+    display: inline-block;
+}
+
+.card-body ul li a{
+    float: left;
+    text-align: center;
+    padding-left: 6px;
+    padding-right: 6px;
+    color: white;
+    font-size: 25px;
+}

@@ -1,0 +1,289 @@
+<div class="text-center reghead">
+    <h1 class="registerheader"> إنـشـاء حـسـاب جـديـد </h1>
+</div>
+<div class="container text-center all">
+    <div class="row">
+
+        <div class="col-md-7">
+            <div class="tab-content" id="pills-tabContent">
+                <!-------------------------------------------Start Form Student----------------------------------->
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                    <form [formGroup]="formStudent" (ngSubmit)="RegisterStudent()">
+
+                        <div class="login-part1">
+
+                            <div class="form-group">
+                                <label for="name1">ادخل الأســم<i class="fa fa-user" aria-hidden="true"></i></label>
+                                <input formControlName="fullNameStudent" type="text" class="form-control" id="name1"
+                                    maxlength="30" 
+                                    pattern="^[\u0621-\u064A\u0660-\u0669 ]+$" >
+
+                                <div class="alert alert-light"
+                                    *ngIf="fullNameStudent.touched && fullNameStudent.invalid">
+                                    <div class="badge badge-primary" *ngIf="fullNameStudent?.errors['required']">
+                                        من فضلك ادخل الأســم
+                                    </div>
+
+                                    <div class="badge badge-success" *ngIf="fullNameStudent?.errors['minlength']">يجب ان
+                                        لا
+                                        يقل عن
+                                        {{ fullNameStudent?.errors['minlength'].requiredLength }} حرف
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone1">ادخل رقم الهاتف <i class="fa fa-phone fa-rotate-270"
+                                        aria-hidden="true"></i></label>
+                                <input formControlName="phoneStudent" type="text" class="form-control" id="phone1"
+                                    min="0" maxlength="11">
+
+                                <div class="alert alert-light" *ngIf="phoneStudent.touched && phoneStudent.invalid">
+                                    <div class="badge badge-primary" *ngIf="phoneStudent?.errors['required']">
+                                        من فضلك ادخل رقم الهاتف
+                                    </div>
+
+                                    <div class="badge badge-info" *ngIf="phoneStudent?.errors['minLength']">
+                                        لا يجب ان يقل عن 11 رقم
+                                    </div>
+
+                                    <div class="badge badge-warning" *ngIf="phoneStudent?.errors['cannotContainSpace']">
+                                        رقم الهاتف لا يحتوى على مسافات
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="faculty">أدخل أسم الكليه<i class="fa fa-university"
+                                        aria-hidden="true"></i></label>
+                                <!----input formControlName="facultyNameStudent" type="text" class="form-control"
+                                    id="faculty" maxlength="30"-->
+
+                                <select formControlName="facultyNameStudent" class="form-control"
+                                    id="faculty" required>
+                                <option>الحاسبات والمعلومات</option>
+                                <option>التجاره</option>
+                                <option>الهندسه</option>
+                                <option>الحقوق</option>
+                                <option>الطب</option>
+                                <option>الصيدله</option>
+                                <option>العلوم</option>
+                                <option>التربيه</option>
+                                <option>الاداب</option>
+                                <option>الطب البيطري</option>
+                                <option>طب الأسنان</option>
+                                    </select>
+
+                                <!----div class="alert alert-light"
+                                    *ngIf="facultyNameStudent.touched && facultyNameStudent.invalid">
+                                    <div class="badge badge-primary" *ngIf="facultyNameStudent?.errors['required']">
+                                        من فضلك أدخل أسم الكليه
+                                    </div>
+
+                                    <div class="badge badge-success" *ngIf="facultyNameStudent?.errors['minlength']">يجب
+                                        ان
+                                        لا يقل عن
+                                        {{ facultyNameStudent?.errors['minlength'].requiredLength }} حرف
+                                    </div>
+                                </div-->
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">اختر صوره <i class="fa fa-picture-o" aria-hidden="true"></i></label>
+                                <input formControlName="imgUrlStudent" type="file" accept="image/*" ng2FileSelect [uploader]="uploader" class="form-control" id="image"
+                                    required>
+                                <div class="alert alert-light" *ngIf="imgUrlStudent.touched && imgUrlStudent.invalid">
+                                    <div class="badge badge-primary" *ngIf="imgUrlStudent?.errors['required']">
+                                        من فضلك اختر صــوره
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">أدخـل الأيميـل<i class="fa fa-user" aria-hidden="true"></i></label>
+                                <input formControlName="emailStudent" type="email" class="form-control" id="email"
+                                    aria-describedby="emailHelp" maxlength="28" autocomplete="off">
+
+                                <div class="alert alert-light" *ngIf="emailStudent.touched && emailStudent.invalid">
+                                    <div class="badge badge-primary" *ngIf="emailStudent?.errors['required']">من فضلك
+                                        ادخل
+                                        الايميل</div>
+
+                                    <div class="badge badge-info" *ngIf="emailStudent?.errors['pattern']">
+                                        هذه الايميل غير صحيح
+                                    </div>
+
+                                    <div class="badge badge-success" *ngIf="emailStudent?.errors['minlength']">يجب ان لا
+                                        يقل عن
+                                        {{ emailStudent?.errors['minlength'].requiredLength }} حرف</div>
+
+                                    <div class="badge badge-warning" *ngIf="emailStudent?.errors['cannotContainSpace']">
+                                        الايميل لا يحتوى على مسافات
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">ادخل كلمه السر <i class="fa fa-unlock-alt"
+                                        aria-hidden="true"></i></label>
+                                <input formControlName="passwordStudent" type="password" class="form-control"
+                                    id="password" maxlength="28">
+
+                                <div class="alert alert-light"
+                                    *ngIf="passwordStudent.touched && passwordStudent.invalid">
+                                    <div class="badge badge-primary" *ngIf="passwordStudent?.errors['required']">
+                                        من فضلك ادخل كلمة السر
+                                    </div>
+
+                                    <div class="badge badge-success" *ngIf="passwordStudent?.errors['minlength']">يجب ان
+                                        لا
+                                        يقل عن
+                                        {{ passwordStudent?.errors['minlength'].requiredLength }} حرف
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-danger btn-login" (click)="uploader.uploadAll()" [disabled]='!formStudent.valid'>
+                                تـسـجـيـل كـ طـالـب
+                                <i class="fa fa-user-plus" aria-hidden="true"></i></button>
+                        </div>
+
+                    </form>
+
+                </div>
+                <!-------------------------------------------End Form Student----------------------------------->
+
+                <!-------------------------------------------Start Form Owner----------------------------------->
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+                    <form [formGroup]="formOwner" (ngSubmit)="RegisterOwner()">
+                        <div class="login-part1">
+
+                            <div class="form-group">
+                                <label for="name2">ادخل الأســم<i class="fa fa-user" aria-hidden="true"></i></label>
+                                <input formControlName="fullNameOwner" type="text" class="form-control" id="name2"
+                                    maxlength="30">
+
+                                <div class="alert alert-light" *ngIf="fullNameOwner.touched && fullNameOwner.invalid">
+                                    <div class="badge badge-primary" *ngIf="fullNameOwner?.errors['required']">
+                                        من فضلك ادخل الأســم
+                                    </div>
+
+                                    <div class="badge badge-success" *ngIf="fullNameOwner?.errors['minlength']">يجب ان
+                                        لا
+                                        يقل عن
+                                        {{ fullNameOwner?.errors['minlength'].requiredLength }} حرف
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone2">ادخل رقم الهاتف <i class="fa fa-phone fa-rotate-270"
+                                        aria-hidden="true"></i></label>
+                                <input formControlName="phoneOwner" type="text" class="form-control" id="phone2" min="0"
+                                    maxlength="11">
+
+                                <div class="alert alert-light" *ngIf="phoneOwner.touched && phoneOwner.invalid">
+                                    <div class="badge badge-primary" *ngIf="phoneOwner?.errors['required']">
+                                        من فضلك ادخل رقم الهاتف
+                                    </div>
+
+                                    <div class="badge badge-info" *ngIf="phoneOwner?.errors['minLength']">
+                                        لا يجب ان يقل عن 11 رقم
+                                    </div>
+
+                                    <div class="badge badge-warning" *ngIf="phoneOwner?.errors['cannotContainSpace']">
+                                        رقم الهاتف لا يحتوى على مسافات
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image1">اختر صوره <i class="fa fa-picture-o" aria-hidden="true"></i></label>
+                                <input  accept="image/*" ng2FileSelect [uploader]="uploader" formControlName="imgUrlOwner" type="file" class="form-control" id="image1"
+                                    required>
+                                <div class="alert alert-light" *ngIf="imgUrlOwner.touched && imgUrlOwner.invalid">
+                                    <div class="badge badge-primary" *ngIf="imgUrlOwner?.errors['required']">
+                                        من فضلك اختر صــوره
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email1">أدخـل الأيميـل<i class="fa fa-user" aria-hidden="true"></i></label>
+                                <input formControlName="emailOwner" type="email" class="form-control" id="email1"
+                                    aria-describedby="emailHelp" maxlength="28" autocomplete="off">
+
+                                <div class="alert alert-light" *ngIf="emailOwner.touched && emailOwner.invalid">
+                                    <div class="badge badge-primary" *ngIf="emailOwner?.errors['required']">من فضلك ادخل
+                                        الايميل</div>
+
+                                    <div class="badge badge-info" *ngIf="emailOwner?.errors['pattern']">
+                                        هذه الايميل غير صحيح
+                                    </div>
+
+                                    <div class="badge badge-success" *ngIf="emailOwner?.errors['minlength']">يجب ان لا
+                                        يقل عن
+                                        {{ emailOwner?.errors['minlength'].requiredLength }} حرف</div>
+
+                                    <div class="badge badge-warning" *ngIf="emailOwner?.errors['cannotContainSpace']">
+                                        الايميل لا يحتوى على مسافات
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password1">ادخل كلمه السر <i class="fa fa-unlock-alt"
+                                        aria-hidden="true"></i></label>
+                                <input formControlName="passwordOwner" type="password" class="form-control"
+                                    id="password1" maxlength="28">
+
+                                <div class="alert alert-light" *ngIf="passwordOwner.touched && passwordOwner.invalid">
+                                    <div class="badge badge-primary" *ngIf="passwordOwner?.errors['required']">
+                                        من فضلك ادخل كلمة السر
+                                    </div>
+
+                                    <div class="badge badge-success" *ngIf="passwordOwner?.errors['minlength']">يجب ان
+                                        لا
+                                        يقل عن
+                                        {{ passwordOwner?.errors['minlength'].requiredLength }} حرف
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-danger btn-login" (click)="uploader.uploadAll()" [disabled]='!formOwner.valid'>
+                                تـسـجـيـل كـ صـاحـب عـقـار
+                                <i class="fa fa-user-plus" aria-hidden="true"></i></button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+        <!-------------------------------------------End Form Owner----------------------------------->
+
+        <div class="col-md-5">
+            <div class="login-part2">
+                <ul class="nav nav-pills" id="pills-tab" role="tablist">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home">تسجيل
+                            كطالب</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile">
+                            تسجيل كصاحب عقار</a>
+                    </li>
+
+                    <img [src]="image">
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

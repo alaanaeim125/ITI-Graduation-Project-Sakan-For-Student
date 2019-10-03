@@ -1,0 +1,43 @@
+.ng-valid[required],
+    .ng-valid.required {
+      border-right: 5px solid #42A948;
+    }
+
+    .ng-invalid:not(form) {
+      border-right: 5px solid #a94442;
+    }
+
+    .form-control.ng-invalid.ng-touched {
+      border-right: 9px solid red;
+    }
+    
+    
+    .form-control.ng-valid.ng-touched {
+      border-right: 9px solid green;
+    }    
+    form
+{
+  width:70%;
+}
+
+.page
+{
+   width:100%;
+   height: 100%;
+   /* background-color: cornflowerblue; */
+   background: url('/assets/home.jpg') no-repeat center center fixed;
+
+   /* -webkit-background-size: cover;
+   
+   -moz-background-size: cover;
+   
+   -o-background-size: cover;
+    */
+   background-size: cover;; 
+}    
+    
+    .badge {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+    }

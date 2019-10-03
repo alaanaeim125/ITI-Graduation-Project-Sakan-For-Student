@@ -1,0 +1,89 @@
+<div class="login-admin text-center container">
+  
+    <h1 class="text-center">تـسـجـيـل الــدخــول </h1>
+    <div class="row">
+        <div class='col-md-4 offset-md-2 part1-login '>
+            <form [formGroup]="formAdmin" (ngSubmit)="loginAdmin()">
+                    <div class="row">
+                            <img class="img-thumbnail"
+                             src="http://localhost:5000/29244215_10155393997736616_1196458243761635328_n.jpg" 
+                             style="width: 160px;height:160px;margin: auto "
+                             />
+                        </div>
+                <div class="form-group" style="margin-top: 15px">
+                    <label for="exampleInputEmail1" class="badge badge-danger" style="width:100%">
+                        أدخل الايميل
+                    </label>
+                    <input formControlName="emailAdmin" type="email" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" placeholder=" أدخل الايميل" autocomplete="off">
+
+                    <div *ngIf="emailAdmin.pending">Checking For Corrct emailAdmin ..... </div>
+
+                    <div class="alert alert-light" *ngIf="emailAdmin.touched && emailAdmin.invalid">
+
+
+                        <div class="badge badge-primary" *ngIf="emailAdmin?.errors['required']">من فضلك ادخل
+                            الايميل</div>
+
+                        <div class="badge badge-info" *ngIf="emailAdmin?.errors['pattern']">
+                            "example@gmail.com" تركيبه الايميل
+                        </div>
+
+                        <div class="badge badge-success" *ngIf="emailAdmin?.errors['minlength']">يجب ان لا
+                            يقل عن
+                            {{ emailAdmin?.errors['minlength'].requiredLength }} حرف</div>
+
+                        <div class="badge badge-warning" *ngIf="emailAdmin?.errors['cannotContainSpace']">
+                            الايميل لا يحتوى على مسافات
+                        </div>
+
+                        <div class="badge badge-info" *ngIf="emailAdmin?.errors['checkEmailExist']">
+                            الإيميل غير صحيح
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1" class="badge badge-danger" style="width:100%">
+                        أدخل الباسورد
+                    </label>
+                    <input formControlName="passwordAdmin" type="password" class="form-control"
+                        id="exampleInputPassword1" placeholder="أدخل الباسورد" autocomplete="off">
+
+                    <div *ngIf="passwordAdmin.pending">Checking For Corrct Password ..... </div>
+
+                    <div class="alert alert-light" *ngIf="passwordAdmin.touched && passwordAdmin.invalid">
+                        <div class="badge badge-primary badge1" *ngIf="passwordAdmin?.errors['required']">
+                            من فضلك ادخل كلمة السر
+                        </div>
+
+                        <div class="badge badge-success badge1" *ngIf="passwordAdmin?.errors['minlength']">يجب ان لا
+                            يقل عن
+                            {{ passwordAdmin?.errors['minlength'].requiredLength }} حرف
+                        </div>
+
+                        <div class="badge badge-info" *ngIf="passwordAdmin?.errors['checkPasswordExist']">
+                            الباسورد خطا
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button class="btn btn-danger btn-block btn-sm" [disabled]='!formAdmin.valid'>
+                    تـسـجـيـل دخــول <i class="fa fa-lock" aria-hidden="true"></i>
+                </button>
+
+            
+            </form>
+        </div>
+
+        <div class="col-md-4">
+            <div class="log-img">
+                <img [src]="image">
+            </div>
+        </div>
+    </div>
+</div>

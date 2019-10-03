@@ -1,0 +1,28 @@
+<h4 class='alert alert-success text-center'>
+    صفحة عرض تفاصيل الاعضاء
+</h4>
+
+<nav aria-label="breadcrumb" dir='rtl'>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/admin/adminPage"> الصفحه الرئيسيه </a></li>
+        <li class="breadcrumb-item active" aria-current="page"> عرض التفاصيل </li>
+    </ol>
+</nav>
+
+<div class="all-page text-center container">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <img src="{{selectedStudent.imgUrlStudent}}" alt="image-user" class="rounded-circle img-thumbnail">
+        </div>
+
+        <div class="col-md-12">
+            <h1 class='name'>{{selectedStudent?.fullName}}</h1>
+            <h3 class='username'>{{selectedStudent?.email}}</h3><br>
+            <h4 class='password'>{{selectedStudent?.facultyName}}</h4><br>
+            <h4 class='password'>{{selectedStudent?.phone}}</h4>
+
+        </div>
+    </div>
+</div>

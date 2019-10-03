@@ -1,0 +1,54 @@
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+  <nav  class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" 
+   dir="rtl" style="text-align: right;">
+    <a class="navbar-brand" href="#"><img style="width: 30px; height: 30px" src="../assets/logo.svg" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/" routerLinkActive="active">الصفحة الرئيسية</a>
+        </li>
+        <!----li class="nav-item "*ngIf="!currentStatus">
+          <a class="nav-link" routerLink="/registerUser" routerLinkActive="active">registerUser</a>
+        </li-->
+        <li class="nav-item " *ngIf="!currentStatus && !currentStatusAdmin ">
+          <a class="nav-link" routerLink="/loginUser" routerLinkActive="active">تسجيل دخول مستخدم</a>
+        </li>
+        <!----li class="nav-item " *ngIf="!currentStatusAdmin && !currentStatus"> 
+          <a class="nav-link" routerLink="/loginAdmin" routerLinkActive="active">تسجيل دخول أدمن</a>
+        </li-->
+        <li class="nav-item " *ngIf="currentStatusAdmin"> 
+          <a class="nav-link" routerLink="/logoutAdmin" routerLinkActive="active">تسجيل خروج أدمن</a>
+        </li>
+        <li class="nav-item " *ngIf="currentStatusAdmin">
+          <a class="nav-link" routerLink="/admin/adminPage" routerLinkActive="active">الأدمن</a>
+        </li>
+        <li class="nav-item " *ngIf="userIsOwner">
+          <a class="nav-link" routerLink="/post" routerLinkActive="active">تسجيل عقار</a>
+        </li>
+        <li class="nav-item " *ngIf="currentStatus">
+          <a class="nav-link" routerLink="/logoutUser" routerLinkActive="active">تسجيل خروج مستخدم</a>
+        </li>
+        <li class="nav-item "  *ngIf="currentStatus">
+          <a class="nav-link" routerLink="{{currentProfile}}" routerLinkActive="active">بروفايل المستخدم</a>
+        </li>
+        <li class="nav-item " >
+          <a class="nav-link" href="#distinctFlatsSection" > عقارات مميزه </a>
+        </li>
+        <li class="nav-item " *ngIf="currentStatus">
+          <a class="nav-link" routerLink="contactUs" > التواصل معنا </a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>
+
+<div style="margin-top:60px ">
+<router-outlet></router-outlet>
+</div>
+</body>
+
+<app-footer></app-footer>

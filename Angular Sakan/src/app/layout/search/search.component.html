@@ -1,0 +1,42 @@
+
+<div class="container-fluid">
+
+<div class="row " style="justify-content:center;" >
+
+<div class="card col-sm-4" style="margin:20px;text-align: right"
+ *ngFor="let post of searchPostList ;let i=index " dir="rtl" >
+        <img class="card-img-top" src="{{post.ImageUrl}}" alt="Card image cap"
+         style="padding-top: 15px;width: 100%;height: 250px" >
+        <div class="card-body">
+          <!----h5 class="card-title">Card title</h5-->
+          <p class="card-text">التفاصيل : {{post.Details}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">محافظة : {{post.Governar}} </li>
+          <li class="list-group-item">المنطقه : {{post.District}} </li>
+          <li class="list-group-item">المساحه : {{post.Area}}</li>
+        </ul>
+        <div class="" style="padding: 15px">
+          <button class="btn btn-primary"
+           style="margin:0 auto;display: block"(click)="showPost(post._id)">عرض التفاصيل</button>
+          <!----button class="btn btn-danger">أطلب</button-->
+        </div>
+    </div>
+<div *ngIf="!isThereAPost" style="padding-top:150px;padding-bottom: 150px">
+
+  <h2 style="margin: 200 auto"> عفواً لاتوجد عقارات متاحه لعرضها</h2>
+
+</div>
+  
+</div>
+<hr>
+<div class="row pb-15" style="padding-bottom: 10px">
+        <ul class="nav nav-pills" style="margin: 0 auto">
+          <li class="nav-item" *ngFor="let p of pagesCount ; let i=index">
+            <a class="nav-link" href="" (click)="setPage(i,$event)"
+             [ngClass]="{'active':i==page}" >{{i+1}}</a>
+          </li>
+        </ul>
+</div>
+
+</div>

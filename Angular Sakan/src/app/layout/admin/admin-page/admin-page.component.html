@@ -1,0 +1,297 @@
+<h1 class='alert alert-primary text-center headAdmin'>
+    Admin Page
+</h1>
+
+<div class="row text-center container-fluid">
+   
+    <div class="col-md-9">
+        <!------------------------ student active -------------------------->
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-home">
+                <table class="table table-responsive-lg table-hover table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">بلوك</th>
+                            <th scope="col">عرض التفاصيل</th>
+                            <th scope="col">الكليه</th>
+                            <th scope="col">رقم الهاتف</th>
+                            <!----th scope="col">الباسورد</th-->
+                            <th scope="col">الأيميل</th>
+                            <th scope="col">الأســـم</th>
+                            <th scope="col">II</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor='let activestudent of studentsActive;let i = index'>
+                            <td><button class='btn btn-danger' (click)="blockStudent(activestudent._id)">بلوك</button></td>
+                            <td><button class='btn btn-info' (click)="viewStudent(activestudent._id)">عرض</button></td>
+                            <td>{{activestudent.facultyName}}</td>
+                            <td>{{activestudent.phone}}</td>
+                            <!----td>{{activestudent.password}}</td-->
+                            <td>{{activestudent.email}}</td>
+                            <td>{{activestudent.fullName}}</td>
+                            <td>{{i+1+pageStudent*6}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <div class="row pb-15">
+                    <ul class="nav nav-pills" style="margin: 0 auto">
+                      <li class="nav-item" *ngFor="let p of pagesCountActiveStudent ; let i=index">
+                        <a class="nav-link" href="" (click)="setPageStudent(i,$event,true)" 
+                        [ngClass]="{'active':i==pageStudent}">{{i+1}}</a>
+                      </li>
+                    </ul>
+            </div>
+            </div>
+
+            <!------------------------ owner active -------------------------->
+            <div class="tab-pane fade" id="v-pills-profile">
+                <table class="table table-responsive-lg table-hover table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">بلوك</th>
+                            <th scope="col">عرض التفاصيل</th>
+                            <th scope="col">رقم الهاتف</th>
+                            <!--th scope="col">الباسورد</th-->
+                            <th scope="col">الأيميل</th>
+                            <th scope="col">الأســـم</th>
+                            <th scope="col">II</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor='let owneractive of ownersActive;let i = index'>
+                            <td><button class='btn btn-danger' (click)="blockOwner(owneractive._id)">بلوك</button></td>
+                            <td><button class='btn btn-info'(click)="viewOwner(owneractive._id)">عرض</button></td>
+                            <td>{{owneractive.phone}}</td>
+                            <!--td>{{owneractive.password}}</td-->
+                            <td>{{owneractive.email}}</td>
+                            <td>{{owneractive.fullName}}</td>
+                            <td>{{i+1+pageOwner*6}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <div class="row pb-15">
+                    <ul class="nav nav-pills" style="margin: 0 auto">
+                      <li class="nav-item" *ngFor="let p of pagesCountActiveOwner ; let i=index">
+                        <a class="nav-link" href="" (click)="setPageOwner(i,$event,true)" 
+                        [ngClass]="{'active':i==pageOwner}">{{i+1}}</a>
+                      </li>
+                    </ul>
+            </div>
+            </div>
+
+            <!------------------------ posts active -------------------------->
+            <div class="tab-pane fade" id="v-pills-messages">
+                <table class="table table-responsive-lg table-hover table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">بلوك</th>
+                            <th scope="col">عرض التفاصيل</th>
+                            <th scope="col">السعر</th>
+                            <th scope="col"> عدد الغرف</th>
+                            <th scope="col"> المساحة</th>
+                            <th scope="col">المركز</th>
+                            <th scope="col">المحافظه</th>
+                            <th scope="col">صاحب العقار</th>
+                            <th scope="col">II</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor='let postactive of postsActive;let i = index'>
+                            <td><button class='btn btn-danger' (click)="blockPost(postactive._id)">بلوك</button></td>
+                            <td><button class='btn btn-info' (click)="viewPost(postactive._id)">عرض</button></td>
+                            <td>{{postactive.Price}}</td>
+                            <td>{{postactive.NumberOfBeds}}</td>
+                            <td>{{postactive.Area}}</td>
+                            <td>{{postactive.District}}</td>
+                            <td>{{postactive.Governar}}</td>
+                            <td>صاحب العقار</td>
+                            <td>{{i+1+pagePost*6}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <div class="row pb-15">
+                    <ul class="nav nav-pills" style="margin: 0 auto">
+                      <li class="nav-item" *ngFor="let p of pagesCountActivePost ; let i=index">
+                        <a class="nav-link" href="" (click)="setPagePost(i,$event,true)" 
+                        [ngClass]="{'active':i==pagePost}">{{i+1}}</a>
+                      </li>
+                    </ul>
+            </div>
+            </div>
+
+            <!--------------------------------------student not active----------------------->
+            <div class="tab-pane fade" id="v-pills-n1">
+                <table class="table table-responsive-lg table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col"> فك</th>
+                            <th scope="col">عرض التفاصيل</th>
+                            <th scope="col">الكليه</th>
+                            <th scope="col">رقم الهاتف</th>
+                            <!----th scope="col">الباسورد</th-->
+                            <th scope="col">الأيميل</th>
+                            <th scope="col">الأســـم</th>
+                            <th scope="col">II</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor='let notactivestudent of studentsNotActive;let i = index'>
+                            <td><button class='btn btn-danger' (click)="activeStudent(notactivestudent._id)">تفعيل</button></td>
+                            <td><button class='btn btn-info' (click)="viewStudent(notactivestudent._id)">عرض</button></td>
+                            <td>{{notactivestudent.facultyName}}</td>
+                            <td>{{notactivestudent.phone}}</td>
+                            <!----td>{{notactivestudent.password}}</td-->
+                            <td>{{notactivestudent.email}}</td>
+                            <td>{{notactivestudent.fullName}}</td>
+                            <td>{{i+1+pageStudent*6}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <div class="row pb-15">
+                    <ul class="nav nav-pills" style="margin: 0 auto">
+                      <li class="nav-item" *ngFor="let p of pagesCountNotActiveStudent ; let i=index">
+                        <a class="nav-link" href="" (click)="setPageStudent(i,$event,false)" 
+                        [ngClass]="{'active':i==pageStudent}">{{i+1}}</a>
+                      </li>
+                    </ul>
+            </div>
+            </div>
+            <!------------------------ owner not active -------------------------->
+            <div class="tab-pane fade" id="v-pills-n2">
+                <table class="table table-responsive-lg table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">فك</th>
+                            <th scope="col">عرض التفاصيل</th>
+                            <th scope="col">رقم الهاتف</th>
+                            <!----th scope="col">الباسورد</th-->
+                            <th scope="col">الأيميل</th>
+                            <th scope="col">الأســـم</th>
+                            <th scope="col">II</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor='let ownernotactive of ownersNotActive;let i = index'>
+                            <td><button class='btn btn-danger' (click)="activeOwner(ownernotactive._id)">تفعيل</button></td>
+                            <td><button class='btn btn-info'(click)="viewOwner(ownernotactive._id)">عرض</button></td>
+                            <td>{{ownernotactive.phone}}</td>
+                            <!--td>{{ownernotactive.password}}</td-->
+                            <td>{{ownernotactive.email}}</td>
+                            <td>{{ownernotactive.fullName}}</td>
+                            <td>{{i+1+pageOwner*6}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                 <div class="row pb-15">
+                    <ul class="nav nav-pills" style="margin: 0 auto">
+                      <li class="nav-item" *ngFor="let p of pagesCountNotActiveOwner ; let i=index">
+                        <a class="nav-link" href="" (click)="setPageOwner(i,$event,false)" 
+                        [ngClass]="{'active':i==pageOwner}">{{i+1}}</a>
+                      </li>
+                    </ul>
+            </div>
+            </div>
+            <!------------------------ posts not active -------------------------->
+            <div class="tab-pane fade" id="v-pills-n3">
+                <table class="table table-responsive-lg table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">فك</th>
+                            <th scope="col">عرض التفاصيل</th>
+                            <th scope="col">السعر</th>
+                            <th scope="col"> عدد الغرف</th>
+                            <th scope="col"> المساحة</th>
+                            <th scope="col">المركز</th>
+                            <th scope="col">المحافظه</th>
+                            <th scope="col">صاحب العقار</th>
+                            <th scope="col">II</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor='let postnotactive of postsNotActive;let i = index'>
+                            <td><button class='btn btn-danger' (click)="activePost(postnotactive._id)">تفعيل</button></td>
+                            <td><button class='btn btn-info' (click)="viewPost(postnotactive._id)">عرض</button></td>
+                            <td>{{postnotactive.Price}}</td>
+                            <td>{{postnotactive.NumberOfBeds}}</td>
+                            <td>{{postnotactive.Area}}</td>
+                            <td>{{postnotactive.District}}</td>
+                            <td>{{postnotactive.Governar}}</td>
+                            <td>صاحب العقار</td>
+                            <td>{{i+1+pagePost*6}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <div class="row pb-15">
+                    <ul class="nav nav-pills" style="margin: 0 auto">
+                      <li class="nav-item" *ngFor="let p of pagesCountNotActivePost ; let i=index">
+                        <a class="nav-link" href="" (click)="setPagePost(i,$event,false)" 
+                        [ngClass]="{'active':i==pagePost}">{{i+1}}</a>
+                      </li>
+                    </ul>
+            </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+    <div class="col-md-3">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
+                aria-selected="true" (click)="getStudentsByStatusAndPage(true,0)">
+                <div class="bbadge1 badge badge-pill badge-warning">{{countActiveStudent}}</div>
+                طلاب فعالين
+            </a>
+
+            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile"
+                aria-selected="false" (click)="getOwnersByStatusAndPage(true,0)">
+                <span class="bbadge1 badge badge-pill badge-warning">{{countActiveOwner}}</span>
+                اصحاب عقارات فعالين</a>
+
+            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages"
+                aria-selected="false" (click)="getPostsByStatusAndPage(true,0)">
+                <span class="bbadge1 badge badge-pill badge-warning">{{countActivePosts}}</span>
+                بوستات فعاله</a>
+
+            <a class="nav-link" id="v-pills-n1-tab" data-toggle="pill" href="#v-pills-n1" aria-selected="false"
+                (click)="getStudentsByStatusAndPage(false,0)">
+                <span class="bbadge1 badge badge-pill badge-warning">{{countNotActiveStudent}}</span>
+                طلاب - غير مفعله</a>
+
+            <a class="nav-link" id="v-pills-n2-tab" data-toggle="pill" href="#v-pills-n2" aria-selected="false"
+                (click)="getOwnersByStatusAndPage(false,0)">
+                <span class="bbadge1 badge badge-pill badge-warning">{{countNotActiveOwner}}</span>
+                صاحب عقار - غير مفعل</a>
+
+            <a class="nav-link" id="v-pills-n3-tab" data-toggle="pill" href="#v-pills-n3" aria-selected="false"
+                (click)="getPostsByStatusAndPage(false,0)">
+                <span class="bbadge1 badge badge-pill badge-warning">{{countNotActivePosts}}</span>
+                بوستات - غير مفعله</a>
+
+                
+        </div>
+    </div>
+
+</div>
+
+
+<br> <br>
+
+
+  

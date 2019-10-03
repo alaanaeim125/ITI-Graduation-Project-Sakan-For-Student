@@ -1,0 +1,27 @@
+<h4 class='alert alert-success text-center'>
+  صفحة عرض  تفاصيل الاعضاء
+</h4>
+
+<div class="all-page text-center container">
+
+  <div class="row">
+      <div class="col-xl-12 col-md-12 px-2 pt-0 pb-4 bg-primary text-center">
+             
+          <img src="{{selectedStudent.imgUrlStudent}}" alt="image-user" class="rounded-circle img-thumbnail">
+          <a href="#" class="btn btn-dark btn-sm btn-block edit text-center"  routerLink="/editStudent/{{selectedStudent._id}}">تعديل البيانات الشخصية</a>
+      </div>  
+
+      <div class="col-md-12 shadow ">
+          <h1 class='name'>{{selectedStudent.fullName}}</h1>
+          <hr>
+          <h2 class='username'>{{selectedStudent.email}}</h2>
+          <hr>
+          <h2 class='phone'>{{selectedStudent.phone}}</h2>
+          <hr>
+          <h2 class='facultyName'>{{selectedStudent.facultyName}}</h2>
+          <hr>
+          
+          <br>
+      </div>
+  </div>
+</div>
